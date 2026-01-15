@@ -1,0 +1,50 @@
+---
+title: "Practicing with Quarto"
+author: "Eric Friedlander"
+format: html
+---
+
+# Introduction
+
+Blash heres my intro
+
+# Data Cleaning
+
+## Package Loading
+
+Today, we're going to analyze some data on flights from New York City!!! Let's first load some packages. We're going to need the folloinwg packages:
+
+- `tidyverse`: This includes all of the functions for manipulating and plotting our data
+- `nycflights13`: This includes the data set that we're working with
+
+```{r}
+#| message: false
+# install.packages(c("tidyverse", "nycflights13"))
+library(tidyverse)
+library(nycflights13)
+```
+
+Now that we've loaded the datasets, let's create some exploratory plots. The plot below shows us that Jetblue (coded as `B6`) is the most common airline to leave out of JFK.
+
+## Exploring JFK
+
+```{r}
+flights |> 
+    filter(origin == "JFK") |> 
+    ggplot(aes(x = carrier)) +
+    geom_bar()
+```
+
+### Finding the most common airline
+
+```{r}
+#| include: false
+top_airline <- flights |> 
+    count(carrier) |> 
+    slice_max(n, n=1) |> 
+    pull(carrier)
+```
+
+The top airline is `r top_airline`.
+
+The way calculate the mean is $\frac{\sum x_i}{n}$
