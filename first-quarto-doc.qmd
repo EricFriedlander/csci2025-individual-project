@@ -20,7 +20,8 @@ Today, we're going to analyze some data on flights from New York City!!! Let's f
 ```{r}
 #| message: false
 # install.packages(c("tidyverse", "nycflights13"))
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
 library(nycflights13)
 ```
 
